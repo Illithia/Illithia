@@ -8,17 +8,89 @@
 
 /* Begin PBXBuildFile section */
 		AA5254B12C7B7E53005D7017 /* IllithiaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254B02C7B7E53005D7017 /* IllithiaApp.swift */; };
-		AA5254B32C7B7E53005D7017 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254B22C7B7E53005D7017 /* ContentView.swift */; };
-		AA5254B52C7B7E55005D7017 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA5254B42C7B7E55005D7017 /* Assets.xcassets */; };
 		AA5254B82C7B7E55005D7017 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA5254B72C7B7E55005D7017 /* Preview Assets.xcassets */; };
+		AA5254C02C7B7F34005D7017 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AA5254BF2C7B7F34005D7017 /* Kingfisher */; };
+		AA5254C32C7B7F43005D7017 /* Flow in Frameworks */ = {isa = PBXBuildFile; productRef = AA5254C22C7B7F43005D7017 /* Flow */; };
+		AA5254C62C7B7F5F005D7017 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA5254C52C7B7F5F005D7017 /* RealmSwift */; };
+		AA5254D72C7B804C005D7017 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254C92C7B804C005D7017 /* Chapter.swift */; };
+		AA5254D82C7B804C005D7017 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254CA2C7B804C005D7017 /* Group.swift */; };
+		AA5254D92C7B804C005D7017 /* Manga.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254CB2C7B804C005D7017 /* Manga.swift */; };
+		AA5254DA2C7B804C005D7017 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA5254CC2C7B804C005D7017 /* Model.xcdatamodeld */; };
+		AA5254DB2C7B804C005D7017 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254CD2C7B804C005D7017 /* Repository.swift */; };
+		AA5254DC2C7B804C005D7017 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254CE2C7B804C005D7017 /* Source.swift */; };
+		AA5254DD2C7B804C005D7017 /* SourceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254CF2C7B804C005D7017 /* SourceItem.swift */; };
+		AA5254DE2C7B804C005D7017 /* ContentRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254D12C7B804C005D7017 /* ContentRating.swift */; };
+		AA5254DF2C7B804C005D7017 /* ContentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254D22C7B804C005D7017 /* ContentStatus.swift */; };
+		AA5254E02C7B804C005D7017 /* ReadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254D32C7B804C005D7017 /* ReadStatus.swift */; };
+		AA5254F72C7B8065005D7017 /* LibraryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254E12C7B8065005D7017 /* LibraryScreen.swift */; };
+		AA5254F82C7B8065005D7017 /* ActionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254E32C7B8065005D7017 /* ActionButtons.swift */; };
+		AA5254F92C7B8065005D7017 /* AuthorArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254E42C7B8065005D7017 /* AuthorArtist.swift */; };
+		AA5254FA2C7B8065005D7017 /* Backdrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254E52C7B8065005D7017 /* Backdrop.swift */; };
+		AA5254FB2C7B8065005D7017 /* ChapterButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254E62C7B8065005D7017 /* ChapterButtons.swift */; };
+		AA5254FC2C7B8065005D7017 /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254E72C7B8065005D7017 /* Description.swift */; };
+		AA5254FD2C7B8065005D7017 /* TagButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254E82C7B8065005D7017 /* TagButtons.swift */; };
+		AA5254FE2C7B8065005D7017 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254E92C7B8065005D7017 /* Title.swift */; };
+		AA5254FF2C7B8065005D7017 /* MangaScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254EB2C7B8065005D7017 /* MangaScreen.swift */; };
+		AA5255002C7B8065005D7017 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254ED2C7B8065005D7017 /* Card.swift */; };
+		AA5255012C7B8065005D7017 /* CardGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254EE2C7B8065005D7017 /* CardGrid.swift */; };
+		AA5255022C7B8065005D7017 /* SourceListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254EF2C7B8065005D7017 /* SourceListItem.swift */; };
+		AA5255032C7B8065005D7017 /* AddSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254F12C7B8065005D7017 /* AddSource.swift */; };
+		AA5255042C7B8065005D7017 /* SourceTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254F22C7B8065005D7017 /* SourceTab.swift */; };
+		AA5255052C7B8065005D7017 /* SourceTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254F32C7B8065005D7017 /* SourceTabView.swift */; };
+		AA5255062C7B8065005D7017 /* SourceScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254F52C7B8065005D7017 /* SourceScreen.swift */; };
+		AA52550A2C7B80DF005D7017 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA5255082C7B80DF005D7017 /* Inter.ttf */; };
+		AA52550B2C7B8146005D7017 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AA5254C52C7B7F5F005D7017 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		AA5255122C7B82A1005D7017 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5255102C7B82A1005D7017 /* HttpClient.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AA52550C2C7B8146005D7017 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AA52550B2C7B8146005D7017 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AA5254AD2C7B7E53005D7017 /* Illithia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Illithia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5254B02C7B7E53005D7017 /* IllithiaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IllithiaApp.swift; sourceTree = "<group>"; };
-		AA5254B22C7B7E53005D7017 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		AA5254B42C7B7E55005D7017 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA5254B72C7B7E55005D7017 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AA5254C92C7B804C005D7017 /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
+		AA5254CA2C7B804C005D7017 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		AA5254CB2C7B804C005D7017 /* Manga.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manga.swift; sourceTree = "<group>"; };
+		AA5254CD2C7B804C005D7017 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		AA5254CE2C7B804C005D7017 /* Source.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
+		AA5254CF2C7B804C005D7017 /* SourceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceItem.swift; sourceTree = "<group>"; };
+		AA5254D12C7B804C005D7017 /* ContentRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentRating.swift; sourceTree = "<group>"; };
+		AA5254D22C7B804C005D7017 /* ContentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentStatus.swift; sourceTree = "<group>"; };
+		AA5254D32C7B804C005D7017 /* ReadStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadStatus.swift; sourceTree = "<group>"; };
+		AA5254D62C7B804C005D7017 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		AA5254E12C7B8065005D7017 /* LibraryScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryScreen.swift; sourceTree = "<group>"; };
+		AA5254E32C7B8065005D7017 /* ActionButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtons.swift; sourceTree = "<group>"; };
+		AA5254E42C7B8065005D7017 /* AuthorArtist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorArtist.swift; sourceTree = "<group>"; };
+		AA5254E52C7B8065005D7017 /* Backdrop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backdrop.swift; sourceTree = "<group>"; };
+		AA5254E62C7B8065005D7017 /* ChapterButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterButtons.swift; sourceTree = "<group>"; };
+		AA5254E72C7B8065005D7017 /* Description.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
+		AA5254E82C7B8065005D7017 /* TagButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagButtons.swift; sourceTree = "<group>"; };
+		AA5254E92C7B8065005D7017 /* Title.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
+		AA5254EB2C7B8065005D7017 /* MangaScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MangaScreen.swift; sourceTree = "<group>"; };
+		AA5254ED2C7B8065005D7017 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		AA5254EE2C7B8065005D7017 /* CardGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardGrid.swift; sourceTree = "<group>"; };
+		AA5254EF2C7B8065005D7017 /* SourceListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceListItem.swift; sourceTree = "<group>"; };
+		AA5254F12C7B8065005D7017 /* AddSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSource.swift; sourceTree = "<group>"; };
+		AA5254F22C7B8065005D7017 /* SourceTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceTab.swift; sourceTree = "<group>"; };
+		AA5254F32C7B8065005D7017 /* SourceTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceTabView.swift; sourceTree = "<group>"; };
+		AA5254F52C7B8065005D7017 /* SourceScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceScreen.swift; sourceTree = "<group>"; };
+		AA5255082C7B80DF005D7017 /* Inter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inter.ttf; sourceTree = "<group>"; };
+		AA52550D2C7B81AF005D7017 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AA52550F2C7B8216005D7017 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA5255102C7B82A1005D7017 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +98,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA5254C62C7B7F5F005D7017 /* RealmSwift in Frameworks */,
+				AA5254C32C7B7F43005D7017 /* Flow in Frameworks */,
+				AA5254C02C7B7F34005D7017 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,10 +126,12 @@
 		AA5254AF2C7B7E53005D7017 /* Illithia */ = {
 			isa = PBXGroup;
 			children = (
-				AA5254B02C7B7E53005D7017 /* IllithiaApp.swift */,
-				AA5254B22C7B7E53005D7017 /* ContentView.swift */,
-				AA5254B42C7B7E55005D7017 /* Assets.xcassets */,
+				AA52550D2C7B81AF005D7017 /* Info.plist */,
+				AA52550E2C7B8211005D7017 /* Resources */,
+				AA5255112C7B82A1005D7017 /* Network */,
+				AA5254D52C7B804C005D7017 /* Data */,
 				AA5254B62C7B7E55005D7017 /* Preview Content */,
+				AA5254C72C7B7FCA005D7017 /* Views */,
 			);
 			path = Illithia;
 			sourceTree = "<group>";
@@ -67,6 +144,136 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		AA5254C72C7B7FCA005D7017 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA5254E22C7B8065005D7017 /* Library */,
+				AA5254EC2C7B8065005D7017 /* Manga */,
+				AA5254F02C7B8065005D7017 /* Shared */,
+				AA5254F62C7B8065005D7017 /* Sources */,
+				AA5254C82C7B7FD2005D7017 /* Main */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA5254C82C7B7FD2005D7017 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				AA5254B02C7B7E53005D7017 /* IllithiaApp.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		AA5254D02C7B804C005D7017 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA5254C92C7B804C005D7017 /* Chapter.swift */,
+				AA5254CA2C7B804C005D7017 /* Group.swift */,
+				AA5254CB2C7B804C005D7017 /* Manga.swift */,
+				AA5254CC2C7B804C005D7017 /* Model.xcdatamodeld */,
+				AA5254CD2C7B804C005D7017 /* Repository.swift */,
+				AA5254CE2C7B804C005D7017 /* Source.swift */,
+				AA5254CF2C7B804C005D7017 /* SourceItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA5254D42C7B804C005D7017 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AA5254D12C7B804C005D7017 /* ContentRating.swift */,
+				AA5254D22C7B804C005D7017 /* ContentStatus.swift */,
+				AA5254D32C7B804C005D7017 /* ReadStatus.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		AA5254D52C7B804C005D7017 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AA5254D02C7B804C005D7017 /* Models */,
+				AA5254D42C7B804C005D7017 /* Shared */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AA5254E22C7B8065005D7017 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				AA5254E12C7B8065005D7017 /* LibraryScreen.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		AA5254EA2C7B8065005D7017 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AA5254E32C7B8065005D7017 /* ActionButtons.swift */,
+				AA5254E42C7B8065005D7017 /* AuthorArtist.swift */,
+				AA5254E52C7B8065005D7017 /* Backdrop.swift */,
+				AA5254E62C7B8065005D7017 /* ChapterButtons.swift */,
+				AA5254E72C7B8065005D7017 /* Description.swift */,
+				AA5254E82C7B8065005D7017 /* TagButtons.swift */,
+				AA5254E92C7B8065005D7017 /* Title.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AA5254EC2C7B8065005D7017 /* Manga */ = {
+			isa = PBXGroup;
+			children = (
+				AA5254EA2C7B8065005D7017 /* Components */,
+				AA5254EB2C7B8065005D7017 /* MangaScreen.swift */,
+			);
+			path = Manga;
+			sourceTree = "<group>";
+		};
+		AA5254F02C7B8065005D7017 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AA5254ED2C7B8065005D7017 /* Card.swift */,
+				AA5254EE2C7B8065005D7017 /* CardGrid.swift */,
+				AA5254EF2C7B8065005D7017 /* SourceListItem.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		AA5254F42C7B8065005D7017 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AA5254F12C7B8065005D7017 /* AddSource.swift */,
+				AA5254F22C7B8065005D7017 /* SourceTab.swift */,
+				AA5254F32C7B8065005D7017 /* SourceTabView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AA5254F62C7B8065005D7017 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA5254F42C7B8065005D7017 /* Components */,
+				AA5254F52C7B8065005D7017 /* SourceScreen.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		AA52550E2C7B8211005D7017 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA52550F2C7B8216005D7017 /* Assets.xcassets */,
+				AA5255082C7B80DF005D7017 /* Inter.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AA5255112C7B82A1005D7017 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AA5255102C7B82A1005D7017 /* HttpClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,12 +284,18 @@
 				AA5254A92C7B7E53005D7017 /* Sources */,
 				AA5254AA2C7B7E53005D7017 /* Frameworks */,
 				AA5254AB2C7B7E53005D7017 /* Resources */,
+				AA52550C2C7B8146005D7017 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Illithia;
+			packageProductDependencies = (
+				AA5254BF2C7B7F34005D7017 /* Kingfisher */,
+				AA5254C22C7B7F43005D7017 /* Flow */,
+				AA5254C52C7B7F5F005D7017 /* RealmSwift */,
+			);
 			productName = Illithia;
 			productReference = AA5254AD2C7B7E53005D7017 /* Illithia.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +324,11 @@
 				Base,
 			);
 			mainGroup = AA5254A42C7B7E53005D7017;
+			packageReferences = (
+				AA5254BE2C7B7F34005D7017 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				AA5254C12C7B7F43005D7017 /* XCRemoteSwiftPackageReference "SwiftUI-Flow" */,
+				AA5254C42C7B7F5F005D7017 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = AA5254AE2C7B7E53005D7017 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,7 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA5254B82C7B7E55005D7017 /* Preview Assets.xcassets in Resources */,
-				AA5254B52C7B7E55005D7017 /* Assets.xcassets in Resources */,
+				AA52550A2C7B80DF005D7017 /* Inter.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +355,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA5254B32C7B7E53005D7017 /* ContentView.swift in Sources */,
+				AA5254FA2C7B8065005D7017 /* Backdrop.swift in Sources */,
+				AA5254D82C7B804C005D7017 /* Group.swift in Sources */,
+				AA5254DF2C7B804C005D7017 /* ContentStatus.swift in Sources */,
 				AA5254B12C7B7E53005D7017 /* IllithiaApp.swift in Sources */,
+				AA5254FF2C7B8065005D7017 /* MangaScreen.swift in Sources */,
+				AA5254FE2C7B8065005D7017 /* Title.swift in Sources */,
+				AA5254DA2C7B804C005D7017 /* Model.xcdatamodeld in Sources */,
+				AA5254FB2C7B8065005D7017 /* ChapterButtons.swift in Sources */,
+				AA5254DD2C7B804C005D7017 /* SourceItem.swift in Sources */,
+				AA5254DC2C7B804C005D7017 /* Source.swift in Sources */,
+				AA5254FC2C7B8065005D7017 /* Description.swift in Sources */,
+				AA5255012C7B8065005D7017 /* CardGrid.swift in Sources */,
+				AA5255032C7B8065005D7017 /* AddSource.swift in Sources */,
+				AA5254D92C7B804C005D7017 /* Manga.swift in Sources */,
+				AA5254FD2C7B8065005D7017 /* TagButtons.swift in Sources */,
+				AA5254F72C7B8065005D7017 /* LibraryScreen.swift in Sources */,
+				AA5254E02C7B804C005D7017 /* ReadStatus.swift in Sources */,
+				AA5254DE2C7B804C005D7017 /* ContentRating.swift in Sources */,
+				AA5255122C7B82A1005D7017 /* HttpClient.swift in Sources */,
+				AA5255062C7B8065005D7017 /* SourceScreen.swift in Sources */,
+				AA5255002C7B8065005D7017 /* Card.swift in Sources */,
+				AA5255022C7B8065005D7017 /* SourceListItem.swift in Sources */,
+				AA5254F82C7B8065005D7017 /* ActionButtons.swift in Sources */,
+				AA5254F92C7B8065005D7017 /* AuthorArtist.swift in Sources */,
+				AA5254D72C7B804C005D7017 /* Chapter.swift in Sources */,
+				AA5255042C7B8065005D7017 /* SourceTab.swift in Sources */,
+				AA5254DB2C7B804C005D7017 /* Repository.swift in Sources */,
+				AA5255052C7B8065005D7017 /* SourceTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +519,7 @@
 				DEVELOPMENT_TEAM = V2NAC76HWU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Illithia/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -287,6 +532,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.illithia.Illithia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -304,6 +553,7 @@
 				DEVELOPMENT_TEAM = V2NAC76HWU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Illithia/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -316,6 +566,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.illithia.Illithia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -344,6 +598,65 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA5254BE2C7B7F34005D7017 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+		AA5254C12C7B7F43005D7017 /* XCRemoteSwiftPackageReference "SwiftUI-Flow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tevelee/SwiftUI-Flow.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.0;
+			};
+		};
+		AA5254C42C7B7F5F005D7017 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA5254BF2C7B7F34005D7017 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA5254BE2C7B7F34005D7017 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		AA5254C22C7B7F43005D7017 /* Flow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA5254C12C7B7F43005D7017 /* XCRemoteSwiftPackageReference "SwiftUI-Flow" */;
+			productName = Flow;
+		};
+		AA5254C52C7B7F5F005D7017 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA5254C42C7B7F5F005D7017 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		AA5254CC2C7B804C005D7017 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AA5254D62C7B804C005D7017 /* Model.xcdatamodel */,
+			);
+			currentVersion = AA5254D62C7B804C005D7017 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = /Users/angelocarasig/Documents/Repos/Illithia/Illithia/Data/Models/Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AA5254A52C7B7E53005D7017 /* Project object */;
 }
