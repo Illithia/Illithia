@@ -47,6 +47,7 @@
 		AA66194E2C83240E002D7C5E /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA66194D2C83240E002D7C5E /* CardRow.swift */; };
 		AA6619572C83430C002D7C5E /* ActiveRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6619562C83430C002D7C5E /* ActiveRepository.swift */; };
 		AA6619592C83454B002D7C5E /* SourceRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6619582C83454B002D7C5E /* SourceRoute.swift */; };
+		AA66195B2C835A27002D7C5E /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA66195A2C835A27002D7C5E /* Haptics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -103,6 +104,7 @@
 		AA66194D2C83240E002D7C5E /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
 		AA6619562C83430C002D7C5E /* ActiveRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveRepository.swift; sourceTree = "<group>"; };
 		AA6619582C83454B002D7C5E /* SourceRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceRoute.swift; sourceTree = "<group>"; };
+		AA66195A2C835A27002D7C5E /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				AA6619462C818F90002D7C5E /* URL+Appending.swift */,
+				AA66195A2C835A27002D7C5E /* Haptics.swift */,
 				AA6619482C8191B5002D7C5E /* Source+Environment.swift */,
 			);
 			path = Extensions;
@@ -420,6 +423,7 @@
 				AA5254B12C7B7E53005D7017 /* IllithiaApp.swift in Sources */,
 				AA6619492C8191B5002D7C5E /* Source+Environment.swift in Sources */,
 				AA5254FF2C7B8065005D7017 /* MangaScreen.swift in Sources */,
+				AA66195B2C835A27002D7C5E /* Haptics.swift in Sources */,
 				AA52551B2C7C56A0005D7017 /* SettingsScreen.swift in Sources */,
 				AA5254FE2C7B8065005D7017 /* Title.swift in Sources */,
 				AA5255152C7C5548005D7017 /* SearchScreen.swift in Sources */,

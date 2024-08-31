@@ -76,6 +76,7 @@ struct ChapterButtons: View {
             Spacer()
             
             Button {
+                Haptics.impact()
                 isShowingSheet = true
             } label: {
                 Image(systemName: "slider.horizontal.3")
