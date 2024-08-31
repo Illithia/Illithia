@@ -32,12 +32,17 @@ private func initRealm() -> Void {
 }
 
 private struct TabGroups: View {
+    @State var activeRepository = ActiveRepository()
+    
     var body: some View {
         TabView {
             LibraryScreen()
                 .tabItem {
                     Image(systemName: "books.vertical.fill")
                     Text("Library")
+                }
+                .onAppear {
+                    activeRepository.clear()
                 }
             
             SearchScreen()
@@ -64,5 +69,6 @@ private struct TabGroups: View {
                     Text("Settings")
                 }
         }
+        .environment(activeRepository)
     }
 }

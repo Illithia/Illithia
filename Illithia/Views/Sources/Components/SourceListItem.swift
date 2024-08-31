@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct SourceListItem: View {
+    @Environment(ActiveRepository.self) var activeRepository
+    
     let repository: Repository
     let sourceItem: SourceItem
     
     var body: some View {
-        NavigationLink(destination: SourceView(repository: repository, sourceItem: sourceItem)) {
+        NavigationLink(destination: SourceView(repository: repository, sourceItem: sourceItem)
+            .onAppear {
+                activeRepository.setActive(repository: repository, sourceItem: sourceItem)
+            }
+        ) {
             HStack {
                 Image(systemName: "square.stack.3d.down.dottedline")
                     .resizable()

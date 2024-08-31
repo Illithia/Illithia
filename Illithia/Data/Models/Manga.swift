@@ -8,7 +8,11 @@ import Foundation
 import RealmSwift
 
 // Struct used when displaying manga in library, search etc.
-struct ListManga: Decodable {
+struct ListManga: Identifiable, Decodable {
+    var id: String {
+        "\(sourceId)/\(slug)"
+    }
+    
     var sourceId: String
     var slug: String
     var title: String

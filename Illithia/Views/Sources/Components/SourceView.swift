@@ -11,68 +11,99 @@ import RealmSwift
 struct SourceView: View {
     var repository: Repository
     var sourceItem: SourceItem
-    @State private var results: [String: Int] = [:] // Dictionary to store route name and result count
+    @State private var mangaResults: [String: [ListManga]] = [:]
     @State private var isLoading = false
     @State private var errorMessage: String?
-
+    
+    private var screenWidth: CGFloat {
+        UIScreen.main.bounds.width
+    }
+    
+    private func getSourceHeight() -> CGFloat {
+        return screenWidth < 420 ? 165 : 185
+    }
+    
+    private var sourceWidth: CGFloat {
+        return getSourceHeight() * (11 / 16)
+    }
+    
     var body: some View {
         VStack {
             if isLoading {
                 ProgressView("Loading...")
+            } else if let errorMessage = errorMessage {
+                Text("Error: \(errorMessage)")
+                    .foregroundColor(.red)
+                    .padding()
             } else {
-                if let errorMessage = errorMessage {
-                    Text("Error: \(errorMessage)")
-                        .foregroundColor(.red)
-                        .padding()
-                } else {
-                    ForEach(sourceItem.routes, id: \.self) { route in
-                        if let count = results[route] {
-                            Text("\(sourceItem.name) - \(route): \(count) manga(s) found")
-                                .padding()
-                        } else {
-                            Text("\(sourceItem.name) - \(route): Loading...")
-                                .padding()
+                ScrollView {
+                    VStack(spacing: 20) {
+                        ForEach(sourceItem.routes, id: \.self) { route in
+                            let routePath = route.path.joined(separator: "/")
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text(route.name)
+                                    .font(.title3)
+                                    .fontWeight(.semibold)
+                                    .padding(.leading, 16)
+                                
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(spacing: 10) {
+                                        if let mangaList = mangaResults[routePath] {
+                                            ForEach(mangaList.prefix(20)) { manga in
+                                                Card(item: manga, sourceWidth: sourceWidth, sourceHeight: getSourceHeight())
+                                            }
+                                        } else {
+                                            Text("Loading...")
+                                                .foregroundColor(.gray)
+                                                .frame(width: sourceWidth, height: getSourceHeight())
+                                        }
+                                    }
+                                    .padding(.horizontal, 16)
+                                }
+                            }
                         }
                     }
                 }
             }
-            Spacer()
         }
-        .onAppear {
-            loadMangaData()
-        }
+        .navigationTitle(sourceItem.name)
+        .onAppear(perform: loadMangaData)
     }
-
+    
     private func loadMangaData() {
         isLoading = true
         errorMessage = nil
-        results = [:]
-
+        mangaResults = [:]
+        
         Task {
-            await withTaskGroup(of: (String, Int?).self) { group in
+            await withTaskGroup(of: (String, [ListManga]?).self) { group in
                 for route in sourceItem.routes {
                     group.addTask {
+                        let routePath = route.path.joined(separator: "/")
                         do {
-                            print("Fetching for route: \(route)")
-                            let mangaList = try await HttpClient().fetchManga(for: repository, sourceItem: sourceItem, route: route)
-                            return (route, mangaList.count)
+                            let mangaList = try await HttpClient().fetchManga(for: repository, sourceItem: sourceItem, route: routePath)
+                            return (routePath, mangaList)
                         } catch {
-                            print("Error fetching route \(route): \(error.localizedDescription)")
-                            return (route, nil)
+                            return (routePath, nil)
                         }
                     }
                 }
-
+                
+                var errorOccurred = false
+                
                 for await result in group {
-                    if let count = result.1 {
-                        results[result.0] = count
+                    if let mangaList = result.1 {
+                        mangaResults[result.0] = mangaList
                     } else {
-                        errorMessage = "Failed to load data for some routes."
+                        errorOccurred = true
                     }
                 }
+                
+                if errorOccurred {
+                    errorMessage = "Failed to load data for some routes."
+                }
+                isLoading = false
             }
-
-            isLoading = false
         }
     }
 }
@@ -81,13 +112,17 @@ struct SourceView: View {
     let mockRepository = Repository()
     
     let mockSourceItem = SourceItem()
-    mockSourceItem.routes.append("MangaDex")
-    mockSourceItem.routes.append("Manganato")
-    mockSourceItem.routes.append("MangaBat")
-    mockSourceItem.routes.append("BatoTo")
-    mockSourceItem.routes.append("Toonily")
-    mockSourceItem.routes.append("NHentai")
-    mockSourceItem.routes.append("EHentai")
+    
+    let mockRoute1 = SourceRoute()
+    mockRoute1.name = "Popular New Titles"
+    mockRoute1.path.append("/rising")
+    
+    let mockRoute2 = SourceRoute()
+    mockRoute2.name = "Recently Updated"
+    mockRoute2.path.append("/recent")
+    
+    mockSourceItem.routes.append(mockRoute1)
+    mockSourceItem.routes.append(mockRoute2)
     
     return SourceView(repository: mockRepository, sourceItem: mockSourceItem)
 }

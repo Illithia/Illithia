@@ -45,6 +45,8 @@
 		AA6619472C818F90002D7C5E /* URL+Appending.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6619462C818F90002D7C5E /* URL+Appending.swift */; };
 		AA6619492C8191B5002D7C5E /* Source+Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6619482C8191B5002D7C5E /* Source+Environment.swift */; };
 		AA66194E2C83240E002D7C5E /* CardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA66194D2C83240E002D7C5E /* CardRow.swift */; };
+		AA6619572C83430C002D7C5E /* ActiveRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6619562C83430C002D7C5E /* ActiveRepository.swift */; };
+		AA6619592C83454B002D7C5E /* SourceRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6619582C83454B002D7C5E /* SourceRoute.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -99,6 +101,8 @@
 		AA6619462C818F90002D7C5E /* URL+Appending.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Appending.swift"; sourceTree = "<group>"; };
 		AA6619482C8191B5002D7C5E /* Source+Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Source+Environment.swift"; sourceTree = "<group>"; };
 		AA66194D2C83240E002D7C5E /* CardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRow.swift; sourceTree = "<group>"; };
+		AA6619562C83430C002D7C5E /* ActiveRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveRepository.swift; sourceTree = "<group>"; };
+		AA6619582C83454B002D7C5E /* SourceRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceRoute.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,7 @@
 				AA5254CD2C7B804C005D7017 /* Repository.swift */,
 				AA5254CE2C7B804C005D7017 /* Source.swift */,
 				AA5254CF2C7B804C005D7017 /* SourceItem.swift */,
+				AA6619582C83454B002D7C5E /* SourceRoute.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 		AA5254D52C7B804C005D7017 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				AA6619552C834300002D7C5E /* State */,
 				AA5254D02C7B804C005D7017 /* Models */,
 				AA5254D42C7B804C005D7017 /* Shared */,
 			);
@@ -318,6 +324,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		AA6619552C834300002D7C5E /* State */ = {
+			isa = PBXGroup;
+			children = (
+				AA6619562C83430C002D7C5E /* ActiveRepository.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -401,6 +415,7 @@
 			files = (
 				AA5254FA2C7B8065005D7017 /* Backdrop.swift in Sources */,
 				AA5254D82C7B804C005D7017 /* Group.swift in Sources */,
+				AA6619592C83454B002D7C5E /* SourceRoute.swift in Sources */,
 				AA5254DF2C7B804C005D7017 /* ContentStatus.swift in Sources */,
 				AA5254B12C7B7E53005D7017 /* IllithiaApp.swift in Sources */,
 				AA6619492C8191B5002D7C5E /* Source+Environment.swift in Sources */,
@@ -430,6 +445,7 @@
 				AA5254D72C7B804C005D7017 /* Chapter.swift in Sources */,
 				AA5255042C7B8065005D7017 /* SourceView.swift in Sources */,
 				AA5254DB2C7B804C005D7017 /* Repository.swift in Sources */,
+				AA6619572C83430C002D7C5E /* ActiveRepository.swift in Sources */,
 				AA5255182C7C5678005D7017 /* HistoryScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

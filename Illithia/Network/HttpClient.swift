@@ -9,11 +9,13 @@ import RealmSwift
 
 @MainActor
 struct HttpClient {
-    func getManga(props: ListManga) async throws -> Manga? {
-        guard let url = URL(string: "https://alethia-edge.alethia.workers.dev/mangadex/manga/\(props.slug)") else {
+    func getManga(repository: Repository, source: String, route: String) async throws -> Manga? {
+        guard let url = URL.appendingPaths(repository.baseUrl, source, "manga", route) else {
             throw URLError(.badURL)
         }
         
+        print("Fetching from url: \(url.absoluteString)")
+                
         let (data, response) = try await URLSession.shared.data(from: url)
         
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
@@ -23,22 +25,6 @@ struct HttpClient {
         let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
         
         return ObjectMapper.MangaMapper(json: json)
-    }
-    
-    func getRecent() async throws -> [ListManga] {
-        guard let url = URL(string: "https://alethia-edge.alethia.workers.dev/mangadex/recent") else {
-            throw URLError(.badURL)
-        }
-        
-        let (data, response) = try await URLSession.shared.data(from: url)
-        
-        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            throw URLError(.badServerResponse)
-        }
-        
-        let mangaList = try JSONDecoder().decode([ListManga].self, from: data)
-        
-        return mangaList
     }
     
     func fetchManga(for repository: Repository, sourceItem: SourceItem, route: String) async throws -> [ListManga] {
@@ -108,7 +94,7 @@ struct HttpClient {
             }
             
             // Fetch and validate custom routes, adding them to the routes list
-            let routes = List<String>()
+            let routes = List<SourceRoute>()
             let (customData, customResponse) = try await URLSession.shared.data(from: sourceURL) // No additional path appended
             
             guard let customHttpResponse = customResponse as? HTTPURLResponse, customHttpResponse.statusCode == 200 else {
@@ -116,11 +102,20 @@ struct HttpClient {
             }
             
             if let customJson = try JSONSerialization.jsonObject(with: customData, options: []) as? [String: Any],
-               let customRoutes = customJson["routes"] as? [String] {
+               let customRoutes = customJson["routes"] as? [[String: String]] {
                 for customRoute in customRoutes {
-                    let customRouteURL = sourceURL.appendingPathComponent(customRoute)
+                    guard let routeName = customRoute["name"], let routePath = customRoute["path"] else {
+                        throw NSError(domain: "InvalidRoute", code: 4, userInfo: [NSLocalizedDescriptionKey: "Invalid route data."])
+                    }
+                    
+                    let customRouteURL = sourceURL.appendingPathComponent(routePath)
                     try await validateRoute(url: customRouteURL)
-                    routes.append(customRoute)
+                    
+                    let sourceRoute = SourceRoute()
+                    sourceRoute.name = routeName
+                    sourceRoute.path.append(routePath)
+                    
+                    routes.append(sourceRoute)
                 }
             }
             

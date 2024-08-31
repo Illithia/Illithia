@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct MangaScreen: View {
-    var props: ListManga
+    @Environment(ActiveRepository.self) var activeRepository
     @State private var manga: Manga? = nil
+    
+    var props: ListManga
     
     var body: some View {
         ZStack {
@@ -73,8 +75,17 @@ struct MangaScreen: View {
     
     func fetchManga(props: ListManga) async {
         do {
-            let manga = try await HttpClient().getManga(props: props)
-            self.manga = manga
+            if activeRepository.repository != nil && activeRepository.sourceItem != nil {
+                let manga = try await HttpClient().getManga(
+                    repository: activeRepository.repository!,
+                    source: activeRepository.sourceItem!.path,
+                    route: props.slug
+                )
+                self.manga = manga
+            }
+            else {
+                print("Manga is probably in library")
+            }
         } catch {
             print(error)
         }
