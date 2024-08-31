@@ -12,7 +12,7 @@ struct SourceListItem: View {
     let sourceItem: SourceItem
     
     var body: some View {
-        NavigationLink(destination: SourceTab(repository: repository, sourceItem: sourceItem)) {
+        NavigationLink(destination: SourceView(repository: repository, sourceItem: sourceItem)) {
             HStack {
                 Image(systemName: "square.stack.3d.down.dottedline")
                     .resizable()

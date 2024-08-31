@@ -23,7 +23,6 @@ struct IllithiaApp: SwiftUI.App {
 }
 
 private func initRealm() -> Void {
-    // Initialize Realm
     do {
         let realm = try Realm()
         print("Realm file location: \(realm.configuration.fileURL?.absoluteString ?? "No file URL")")
@@ -41,12 +40,11 @@ private struct TabGroups: View {
                     Text("Library")
                 }
             
-            NavigationView {
-            }
-            .tabItem {
-                Image(systemName: "magnifyingglass")
-                Text("Search")
-            }
+            SearchScreen()
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
+                }
             
             SourceScreen()
                 .tabItem {
@@ -54,19 +52,17 @@ private struct TabGroups: View {
                     Text("Sources")
                 }
             
-            NavigationView {
-            }
-            .tabItem {
-                Image(systemName: "clock.fill")
-                Text("History")
-            }
+            HistoryScreen()
+                .tabItem {
+                    Image(systemName: "clock.fill")
+                    Text("History")
+                }
             
-            NavigationView {
-            }
-            .tabItem {
-                Image(systemName: "gearshape.fill")
-                Text("Settings")
-            }
+            SettingsScreen()
+                .tabItem {
+                    Image(systemName: "gearshape.fill")
+                    Text("Settings")
+                }
         }
     }
 }

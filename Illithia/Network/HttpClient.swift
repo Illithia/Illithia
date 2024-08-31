@@ -42,12 +42,12 @@ struct HttpClient {
     }
     
     func fetchManga(for repository: Repository, sourceItem: SourceItem, route: String) async throws -> [ListManga] {
-        guard let url = URL(string: "\(repository.baseUrl)/\(sourceItem.name)/\(route)") else {
+        guard let url = URL.appendingPaths(repository.baseUrl, sourceItem.path, route) else {
             throw URLError(.badURL)
         }
         
         print("Repository URL: ", repository.baseUrl)
-        print("Source Item: ", sourceItem.name)
+        print("Source Item: ", sourceItem.path)
         print("Route: ", route)
         print("URL: ", url.absoluteString)
         
@@ -81,7 +81,7 @@ struct HttpClient {
         }
         
         guard let repositoryName = json["repository"] as? String,
-              let sourcesArray = json["sources"] as? [String],
+              let sourcesArray = json["sources"] as? [[String: String]],
               !sourcesArray.isEmpty else {
             throw NSError(domain: "InvalidRepository", code: 1, userInfo: [NSLocalizedDescriptionKey: "Invalid repository data."])
         }
@@ -90,8 +90,12 @@ struct HttpClient {
         repository.name = repositoryName
         repository.baseUrl = url.absoluteString
         
-        for source in sourcesArray {
-            let sourceURL = url.appendingPathComponent(source)
+        for sourceDict in sourcesArray {
+            guard let sourceName = sourceDict["source"], let path = sourceDict["path"] else {
+                throw NSError(domain: "InvalidSource", code: 3, userInfo: [NSLocalizedDescriptionKey: "Invalid source data."])
+            }
+            
+            let sourceURL = url.appendingPathComponent(path)
             
             // Validate the base source URL
             try await validateRoute(url: sourceURL)
@@ -121,7 +125,8 @@ struct HttpClient {
             }
             
             let sourceItem = SourceItem()
-            sourceItem.name = source
+            sourceItem.name = sourceName
+            sourceItem.path = path
             sourceItem.routes = routes
             sourceItem.enabled = true
             
@@ -131,7 +136,6 @@ struct HttpClient {
         return repository
     }
     
-    
     private func validateRoute(url: URL) async throws {
         let (_, response) = try await URLSession.shared.data(from: url)
         
@@ -139,6 +143,7 @@ struct HttpClient {
             throw NSError(domain: "InvalidRoute", code: 2, userInfo: [NSLocalizedDescriptionKey: "Invalid route at \(url.absoluteString)"])
         }
     }
+    
 }
 
 struct ObjectMapper {
