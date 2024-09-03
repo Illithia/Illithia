@@ -15,7 +15,6 @@ struct SourceScreen: View {
     
     /**
      TODO:
-     - Handle case when no repositories are added
      - Add functional edit button
      - Make sources able to be enabled/disabled for a given repo
      */

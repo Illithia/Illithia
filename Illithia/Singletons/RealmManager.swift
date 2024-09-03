@@ -22,10 +22,10 @@ class RealmManager {
     func fetchManga(byTitle title: String) -> Manga? {
         do {
             let realm = try getRealmInstance()
-            let lowercaseTitle = title.lowercased()
+            let normalizedTitle = normalize(title)
             
             return realm.objects(Manga.self).filter { manga in
-                manga.title.lowercased() == lowercaseTitle || manga.alternativeTitles.contains { $0.lowercased() == lowercaseTitle }
+                manga.normalizedTitle == normalizedTitle || manga.normalizedAlternativeTitles.contains(normalizedTitle)
             }.first
         } catch {
             print("Failed to retrieve manga from database: \(error)")
@@ -76,17 +76,22 @@ class RealmManager {
     func isMangaInLibrary(byTitle title: String) -> Bool {
         do {
             let realm = try getRealmInstance()
-            let lowercaseTitle = title.lowercased()
-            
-            print("Checking if \(title) is in library...")
+            let normalizedTitle = normalize(title)
             
             return realm.objects(Manga.self).filter { manga in
-                manga.title.lowercased() == lowercaseTitle || manga.alternativeTitles.contains { $0.lowercased() == lowercaseTitle }
+                manga.normalizedTitle == normalizedTitle || manga.normalizedAlternativeTitles.contains(normalizedTitle)
             }.count > 0
         } catch {
             print("Failed to check manga in library: \(error)")
             return false
         }
     }
+    
+    // Helper method to normalize titles (similar to the one in Manga class)
+    private func normalize(_ string: String) -> String {
+        return string.lowercased()
+            .components(separatedBy: CharacterSet.punctuationCharacters)
+            .joined()
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }
-

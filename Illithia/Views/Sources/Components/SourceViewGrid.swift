@@ -20,7 +20,7 @@ struct SourceViewGrid: View {
             print("Page value changed to \(page)")
         }
     }
-    @State private var shouldRefresh: Bool = true // Track if the view should refresh
+    @State private var shouldRefresh: Bool = true // View shouldn't refresh if navigating to card and back to this
     
     var body: some View {
         ScrollView {

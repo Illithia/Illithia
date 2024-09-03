@@ -17,7 +17,6 @@ struct Card: View {
     let sourceHeight: CGFloat
     
     @State private var isImageLoading: Bool = true
-    @State private var isInLibrary: Bool = false
     
     var body: some View {
         NavigationLink(destination: MangaScreen(props: item)) {
@@ -47,10 +46,10 @@ struct Card: View {
                         .cornerRadius(8)
                         .clipped()
                         .overlay(
-                            activeRepository.repository == nil ? .clear : (isInLibrary ? .black.opacity(0.5) : .clear)
+                            activeRepository.repository == nil ? .clear : (item.isInLibrary == true ? .black.opacity(0.5) : .clear)
                         )
                     
-                    if isInLibrary {
+                    if item.isInLibrary == true {
                         Image(uiImage: Lucide.badgeCheck)
                             .lucide(color: .green)
                             .padding(.top, 4)
@@ -68,9 +67,6 @@ struct Card: View {
             .padding(.bottom, 5)
         }
         .buttonStyle(PlainButtonStyle())
-        .onAppear {
-            isInLibrary = activeRepository.repository != nil && RealmManager.shared.isMangaInLibrary(byTitle: item.title)
-        }
     }
 }
 

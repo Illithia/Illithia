@@ -41,11 +41,6 @@ struct HttpClient {
             throw URLError(.badURL)
         }
         
-        print("Repository URL: ", repository.baseUrl)
-        print("Source Item: ", sourceItem.path)
-        print("Route: ", route)
-        print("URL: ", finalUrl.absoluteString)
-        
         // Make the network request
         let (data, response) = try await URLSession.shared.data(from: finalUrl)
         
@@ -55,7 +50,7 @@ struct HttpClient {
         }
         
         // Decode the JSON response into a list of manga objects
-        let mangaList = try JSONDecoder().decode([ListManga].self, from: data)
+        var mangaList = try JSONDecoder().decode([ListManga].self, from: data)
         
         return mangaList
     }

@@ -55,6 +55,7 @@
 		AA6619572C83430C002D7C5E /* ActiveRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6619562C83430C002D7C5E /* ActiveRepository.swift */; };
 		AA6619592C83454B002D7C5E /* SourceRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6619582C83454B002D7C5E /* SourceRoute.swift */; };
 		AA66195B2C835A27002D7C5E /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA66195A2C835A27002D7C5E /* Haptics.swift */; };
+		AAF0167E2C8696A8008AA47C /* MangaLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF0167D2C8696A8008AA47C /* MangaLibrary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -116,6 +117,7 @@
 		AA6619562C83430C002D7C5E /* ActiveRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveRepository.swift; sourceTree = "<group>"; };
 		AA6619582C83454B002D7C5E /* SourceRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceRoute.swift; sourceTree = "<group>"; };
 		AA66195A2C835A27002D7C5E /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		AAF0167D2C8696A8008AA47C /* MangaLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaLibrary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,14 +171,14 @@
 		AA5254AF2C7B7E53005D7017 /* Illithia */ = {
 			isa = PBXGroup;
 			children = (
-				AA41DF472C85FB28007DF417 /* Singletons */,
-				AA52550D2C7B81AF005D7017 /* Info.plist */,
-				AA41DF442C85F2B8007DF417 /* Utils */,
-				AA6619422C818EE6002D7C5E /* Extensions */,
-				AA52550E2C7B8211005D7017 /* Resources */,
-				AA5255112C7B82A1005D7017 /* Network */,
 				AA5254D52C7B804C005D7017 /* Data */,
+				AA6619422C818EE6002D7C5E /* Extensions */,
+				AA52550D2C7B81AF005D7017 /* Info.plist */,
+				AA5255112C7B82A1005D7017 /* Network */,
 				AA5254B62C7B7E55005D7017 /* Preview Content */,
+				AA52550E2C7B8211005D7017 /* Resources */,
+				AA41DF472C85FB28007DF417 /* Singletons */,
+				AA41DF442C85F2B8007DF417 /* Utils */,
 				AA5254C72C7B7FCA005D7017 /* Views */,
 			);
 			path = Illithia;
@@ -365,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				AA6619562C83430C002D7C5E /* ActiveRepository.swift */,
+				AAF0167D2C8696A8008AA47C /* MangaLibrary.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				AA5254FC2C7B8065005D7017 /* Description.swift in Sources */,
 				AA5255012C7B8065005D7017 /* CardGrid.swift in Sources */,
 				AA5255032C7B8065005D7017 /* AddSource.swift in Sources */,
+				AAF0167E2C8696A8008AA47C /* MangaLibrary.swift in Sources */,
 				AA5254D92C7B804C005D7017 /* Manga.swift in Sources */,
 				AA41DF3E2C85BF4C007DF417 /* Image+LucideStyle.swift in Sources */,
 				AA66194E2C83240E002D7C5E /* CardRow.swift in Sources */,

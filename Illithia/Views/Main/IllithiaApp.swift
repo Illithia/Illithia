@@ -32,6 +32,7 @@ private func initRealm() -> Void {
 }
 
 private struct TabGroups: View {
+    @State var mangaLibrary = MangaLibrary()
     @State var activeRepository = ActiveRepository()
     
     var body: some View {
@@ -69,6 +70,7 @@ private struct TabGroups: View {
                     Text("Settings")
                 }
         }
+        .environment(mangaLibrary)
         .environment(activeRepository)
     }
 }
