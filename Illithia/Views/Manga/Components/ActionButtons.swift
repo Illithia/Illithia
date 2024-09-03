@@ -6,42 +6,50 @@
 //
 
 import SwiftUI
+import RealmSwift
+import LucideIcons
 
 struct ActionButtons: View {
+    var manga: Manga
+    var inLibrary: Bool
+    var saveMangaToLibrary: (Manga) -> Void
+    var deleteMangaFromLibrary: (Manga) -> Void
+
     var body: some View {
         HStack(spacing: 12) {
             Button {
-                print("Test")
+                if (inLibrary) {
+                    deleteMangaFromLibrary(manga)
+                }
+                else {
+                    saveMangaToLibrary(manga)
+                }
             } label: {
                 Text(Image(systemName: "heart"))
-                Text("In Library")
+                Text(inLibrary ? "In Library" : "Add to Library")
             }
             .fontWeight(.medium)
             .padding(.vertical, 14)
-            .foregroundStyle(Color("BackgroundColor"))
             .frame(maxWidth: .infinity)
-            .background(Color("TextColor"), in: .rect(cornerRadius: 12, style: .continuous))
+            .foregroundStyle(inLibrary ? Color("BackgroundColor") : .white)
+            .background(inLibrary ? Color("TextColor") : Color("TintColor"), in: .rect(cornerRadius: 12, style: .continuous))
             
             Button {
-                print("Test2")
+                if (inLibrary) {
+                    deleteMangaFromLibrary(manga)
+                }
+                else {
+                    saveMangaToLibrary(manga)
+                }
             } label: {
-                Text(Image(systemName: "heart"))
-                Text("Tracking")
+                Text(Image(systemName: "plus.square.dashed"))
+                Text(inLibrary ? "Source Registered" : "Add Source")
             }
             .fontWeight(.medium)
             .padding(.vertical, 14)
-            .foregroundStyle(.white)
             .frame(maxWidth: .infinity)
-            .background(Color("TintColor"), in: .rect(cornerRadius: 12, style: .continuous))
-            
-            Text(Image(systemName: "square.and.arrow.up"))
-                .font(.title2)
-            Text(Image(systemName: "link"))
-                .font(.title2)
+            .foregroundStyle(inLibrary ? Color("BackgroundColor") : .white)
+            .background(inLibrary ? Color("TextColor") : Color("TintColor"), in: .rect(cornerRadius: 12, style: .continuous))
         }
     }
-}
-
-#Preview {
-    ActionButtons()
 }

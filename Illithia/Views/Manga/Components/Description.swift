@@ -16,9 +16,27 @@ struct Description: View {
             }
         }
     }
+    @State private var truncated: Bool = false
     
     init(description: String = "No Description") {
         self.description = description
+    }
+    
+    // https://stackoverflow.com/a/59662216
+    private func determineTruncation(_ geometry: GeometryProxy) {
+        let total = self.description.boundingRect(
+            with: CGSize(width: geometry.size.width, height: .greatestFiniteMagnitude),
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: UIFont.systemFont(ofSize: 16)],
+            context: nil
+        )
+        
+        let lineHeight = UIFont.systemFont(ofSize: 16).lineHeight
+        let maxHeight = lineHeight * 6 // Maximum height for 6 lines
+        
+        if total.size.height > maxHeight {
+            self.truncated = true
+        }
     }
     
     var body: some View {
@@ -26,14 +44,20 @@ struct Description: View {
             Text(description)
                 .lineLimit(isExpanded ? nil : 6)
                 .multilineTextAlignment(.leading)
+                .background(
+                    GeometryReader { geometry in
+                        Color.clear.onAppear {
+                            self.determineTruncation(geometry)
+                        }
+                    }
+                )
                 .onTapGesture {
                     withAnimation {
                         isExpanded.toggle()
                     }
                 }
             
-            // Threshold for "long" text
-            if description.count > 250 {
+            if truncated {
                 HStack {
                     Spacer()
                     Button(action: {
@@ -73,4 +97,3 @@ struct Description: View {
         Spacer()
     }
 }
-

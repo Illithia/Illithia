@@ -1,6 +1,24 @@
 {
-  "originHash" : "0ff4cf1169d14fbd34ef971fb5d34bba19c1eceb1b9cc541bd5cbd20d1edf624",
+  "originHash" : "d1f1c27949925c8e943a5086c7f555a4b16088a8c4d6add7406179b1aae97ccd",
   "pins" : [
+    {
+      "identity" : "alerttoast",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/elai950/AlertToast",
+      "state" : {
+        "revision" : "b39252eacd159904afd7d718bba0afabb87f2f2f",
+        "version" : "1.3.9"
+      }
+    },
+    {
+      "identity" : "inject",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzysztofzablocki/Inject",
+      "state" : {
+        "revision" : "728c56639ecb3df441d51d5bc6747329afabcfc9",
+        "version" : "1.5.2"
+      }
+    },
     {
       "identity" : "kingfisher",
       "kind" : "remoteSourceControl",
@@ -8,6 +26,15 @@
       "state" : {
         "revision" : "2ef543ee21d63734e1c004ad6c870255e8716c50",
         "version" : "7.12.0"
+      }
+    },
+    {
+      "identity" : "lucide-icons-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JakubMazur/lucide-icons-swift.git",
+      "state" : {
+        "revision" : "a0e96f63c93278fb56ee70c569f276f4e2582e21",
+        "version" : "0.438.0"
       }
     },
     {

@@ -15,7 +15,7 @@ struct HttpClient {
         }
         
         print("Fetching from url: \(url.absoluteString)")
-                
+        
         let (data, response) = try await URLSession.shared.data(from: url)
         
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
@@ -27,18 +27,27 @@ struct HttpClient {
         return ObjectMapper.MangaMapper(json: json)
     }
     
-    func fetchManga(for repository: Repository, sourceItem: SourceItem, route: String) async throws -> [ListManga] {
+    func fetchManga(for repository: Repository, sourceItem: SourceItem, route: String, page: Int = 0) async throws -> [ListManga] {
         guard let url = URL.appendingPaths(repository.baseUrl, sourceItem.path, route) else {
+            throw URLError(.badURL)
+        }
+        
+        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        urlComponents?.queryItems = [
+            URLQueryItem(name: "page", value: "\(page)")
+        ]
+        
+        guard let finalUrl = urlComponents?.url else {
             throw URLError(.badURL)
         }
         
         print("Repository URL: ", repository.baseUrl)
         print("Source Item: ", sourceItem.path)
         print("Route: ", route)
-        print("URL: ", url.absoluteString)
+        print("URL: ", finalUrl.absoluteString)
         
         // Make the network request
-        let (data, response) = try await URLSession.shared.data(from: url)
+        let (data, response) = try await URLSession.shared.data(from: finalUrl)
         
         // Check the HTTP response status code
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
@@ -52,7 +61,7 @@ struct HttpClient {
     }
     
     func addRepository(url: String) async throws -> Repository? {
-        guard let url = URL(string: url) else {
+        guard let url = URL.appendingPaths(url) else {
             throw URLError(.badURL)
         }
         
@@ -200,8 +209,7 @@ struct ObjectMapper {
         chapter.slug = json["slug"] as? String ?? UUID().uuidString
         chapter.sourceId = sourceId
         chapter.mangaSlug = mangaSlug
-        chapter.pages = json["pages"] as? Int ?? 0
-        chapter.chapterNumber = json["chapterNumber"] as? Int ?? 0
+        chapter.chapterNumber = json["chapterNumber"] as? Double ?? -1.0
         chapter.chapterTitle = json["chapterTitle"] as? String ?? ""
         chapter.author = json["author"] as? String ?? sourceId
         

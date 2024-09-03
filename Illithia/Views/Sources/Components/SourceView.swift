@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import LucideIcons
 
 struct SourceView: View {
     var repository: Repository
@@ -14,6 +15,9 @@ struct SourceView: View {
     @State private var mangaResults: [String: [ListManga]] = [:]
     @State private var isLoading = false
     @State private var errorMessage: String?
+    
+    // Clicking on a Card and navigating back should not re-fetch data
+    @State private var hasLoadedData = false
     
     private var screenWidth: CGFloat {
         UIScreen.main.bounds.width
@@ -37,17 +41,26 @@ struct SourceView: View {
                     .padding()
             } else {
                 ScrollView {
+                    Spacer().frame(height: 12)
+                    
                     VStack(spacing: 20) {
                         ForEach(sourceItem.routes, id: \.self) { route in
                             let routePath = route.path.joined(separator: "/")
                             VStack(alignment: .leading, spacing: 10) {
-                                Text(route.name)
-                                    .font(.title3)
-                                    .fontWeight(.semibold)
-                                    .padding(.leading, 16)
+                                NavigationLink(destination: SourceViewGrid(repository: repository, sourceItem: sourceItem, sourceRoute: route)) {
+                                    HStack {
+                                        Text(route.name)
+                                            .font(.title3)
+                                            .fontWeight(.semibold)
+                                            .padding(.leading, 16)
+                                        Image(uiImage: Lucide.arrowRight)
+                                            .lucide()
+                                    }
+                                }
+                                .buttonStyle(PlainButtonStyle())
                                 
                                 ScrollView(.horizontal, showsIndicators: false) {
-                                    HStack(spacing: 10) {
+                                    LazyHStack(spacing: 10) {
                                         if let mangaList = mangaResults[routePath] {
                                             ForEach(mangaList.prefix(20)) { manga in
                                                 Card(item: manga, sourceWidth: sourceWidth, sourceHeight: getSourceHeight())
@@ -67,13 +80,20 @@ struct SourceView: View {
             }
         }
         .navigationTitle(sourceItem.name)
-        .onAppear(perform: loadMangaData)
+        .onAppear(perform: handleOnAppear)
+    }
+    
+    private func handleOnAppear() {
+        if !hasLoadedData {
+            loadMangaData()
+        }
     }
     
     private func loadMangaData() {
         isLoading = true
         errorMessage = nil
         mangaResults = [:]
+        hasLoadedData = true
         
         Task {
             await withTaskGroup(of: (String, [ListManga]?).self) { group in

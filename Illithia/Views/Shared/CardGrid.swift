@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct CardGrid: View {
-    let recentManga: [ListManga]
+    let manga: [ListManga]
     let isLoading: Bool
+    let loadMore: () -> Void  // Callback to trigger loading more manga
     
     private var screenWidth: CGFloat {
         UIScreen.main.bounds.width
     }
     
     private func getSourceHeight() -> CGFloat {
-        // iOS screens / iOS Max and iPad screens
         return screenWidth < 420 ? 165 : 185
     }
     
@@ -33,8 +33,13 @@ struct CardGrid: View {
                 columns: [GridItem(.adaptive(minimum: sourceWidth), spacing: 0)],
                 spacing: 0
             ) {
-                ForEach(recentManga, id: \.slug) { item in
+                ForEach(manga, id: \.slug) { item in
                     Card(item: item, sourceWidth: sourceWidth, sourceHeight: getSourceHeight())
+                        .onAppear {
+                            if item == manga.last {
+                                loadMore()
+                            }
+                        }
                 }
             }
             .padding(.horizontal, 10)
@@ -43,5 +48,5 @@ struct CardGrid: View {
 }
 
 #Preview {
-    CardGrid(recentManga: [], isLoading: true)
+    CardGrid(manga: [], isLoading: true, loadMore: {})
 }

@@ -26,7 +26,7 @@ struct SourceListItem: View {
                     .padding(.trailing, 10)
                 
                 VStack(alignment: .leading) {
-                    Text(sourceItem.name.capitalized)
+                    Text(sourceItem.name)
                         .font(.headline)
                     Text(repository.name)
                         .font(.subheadline)

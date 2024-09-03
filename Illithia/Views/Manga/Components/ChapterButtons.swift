@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import LucideIcons
 
 struct ChapterButtons: View {
     let chapters: RealmSwift.List<Chapter>
@@ -58,7 +59,7 @@ struct ChapterButtons: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             header
             
             Divider().frame(height: 12)
@@ -79,8 +80,8 @@ struct ChapterButtons: View {
                 Haptics.impact()
                 isShowingSheet = true
             } label: {
-                Image(systemName: "slider.horizontal.3")
-                    .font(.title2)
+                Image(uiImage: Lucide.listFilter)
+                    .lucide()
             }
             .padding(12)
             .foregroundColor(Color("TextColor"))
@@ -138,16 +139,18 @@ struct ChapterButtons: View {
     private func chapterRow(chapter: Chapter) -> some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text("Chapter \(chapter.chapterNumber)\(chapter.chapterTitle.isEmpty ? "" : " - \(chapter.chapterTitle)")")
+                Text("Chapter \(chapter.chapterNumber.clean)\(chapter.chapterTitle.isEmpty ? "" : " - \(chapter.chapterTitle)")")
+                    .lineLimit(2)
+                    .multilineTextAlignment(.leading)
                 
-                Spacer()
+                Spacer().frame(height: 4)
                 
                 Text(chapter.date, style: .date)
-                    .font(.caption)
+                    .font(.footnote)
                     .foregroundColor(.secondary)
                 
                 Text(chapter.author)
-                    .font(.caption)
+                    .font(.footnote)
                     .foregroundColor(.secondary)
             }
             
@@ -155,9 +158,9 @@ struct ChapterButtons: View {
             
             if isNew(chapter: chapter) {
                 Text("NEW")
-                    .font(.caption2)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
+                    .font(.system(size: 16))
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 8)
                     .background(Color("AlertColor"))
                     .foregroundColor(.white)
                     .cornerRadius(8)
@@ -176,7 +179,6 @@ struct ChapterButtons: View {
     chapter1.slug = "ch1"
     chapter1.sourceId = "source1"
     chapter1.mangaSlug = "manga1"
-    chapter1.pages = 20
     chapter1.chapterNumber = 1
     chapter1.chapterTitle = "The Beginning"
     chapter1.author = "Author A"
@@ -186,24 +188,33 @@ struct ChapterButtons: View {
     chapter2.slug = "ch2"
     chapter2.sourceId = "source1"
     chapter2.mangaSlug = "manga1"
-    chapter2.pages = 22
     chapter2.chapterNumber = 2
     chapter2.chapterTitle = "The Continuation"
     chapter2.author = "Author A"
     chapter2.date = Calendar.current.date(byAdding: .day, value: -4, to: Date())!
     
     let chapter3 = Chapter()
-    chapter2.slug = "ch3"
-    chapter2.sourceId = "source1"
-    chapter2.mangaSlug = "manga1"
-    chapter2.pages = 22
-    chapter2.chapterNumber = 2
-    chapter2.chapterTitle = "The Continuation with a lot more words that doesn't make sense and sounds really confusing"
-    chapter2.author = "Author A"
-    chapter2.date = Calendar.current.date(byAdding: .day, value: -4, to: Date())!
+    chapter3.slug = "ch3"
+    chapter3.sourceId = "source1"
+    chapter3.mangaSlug = "manga1"
+    chapter3.chapterNumber = 3
+    chapter3.chapterTitle = "The Continuation with a lot more words that doesn't make sense and sounds really confusing"
+    chapter3.author = "Author A"
+    chapter3.date = Calendar.current.date(byAdding: .day, value: -4, to: Date())!
+    
+    let chapter4 = Chapter()
+    chapter4.slug = "ch3"
+    chapter4.sourceId = "source1"
+    chapter4.mangaSlug = "manga1"
+    chapter4.chapterNumber = 4.1
+    chapter4.chapterTitle = "The Continuation with a lot more words that doesn't make sense and sounds really confusing"
+    chapter4.author = "Author A"
+    chapter4.date = Date()
 
     sampleChapters.append(chapter1)
     sampleChapters.append(chapter2)
+    sampleChapters.append(chapter3)
+    sampleChapters.append(chapter4)
     
     return ChapterButtons(chapters: sampleChapters)
 }

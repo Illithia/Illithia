@@ -6,20 +6,23 @@
 //
 
 import SwiftUI
-
 import Kingfisher
+import LucideIcons
 
 struct Card: View {
+    @Environment(ActiveRepository.self) var activeRepository
+    
     let item: ListManga
     let sourceWidth: CGFloat
     let sourceHeight: CGFloat
     
     @State private var isImageLoading: Bool = true
+    @State private var isInLibrary: Bool = false
     
     var body: some View {
         NavigationLink(destination: MangaScreen(props: item)) {
             VStack(alignment: .leading) {
-                ZStack {
+                ZStack(alignment: .topLeading) {
                     if isImageLoading {
                         // Skeleton Loader
                         Rectangle()
@@ -43,6 +46,16 @@ struct Card: View {
                         .frame(width: sourceWidth, height: sourceHeight)
                         .cornerRadius(8)
                         .clipped()
+                        .overlay(
+                            activeRepository.repository == nil ? .clear : (isInLibrary ? .black.opacity(0.5) : .clear)
+                        )
+                    
+                    if isInLibrary {
+                        Image(uiImage: Lucide.badgeCheck)
+                            .lucide(color: .green)
+                            .padding(.top, 4)
+                            .padding(.leading, 4)
+                    }
                 }
                 
                 Text(item.title)
@@ -50,10 +63,14 @@ struct Card: View {
                     .lineLimit(2)
                     .frame(width: sourceWidth, height: 40, alignment: .topLeading)
                     .truncationMode(.tail)
+                    .foregroundColor(.primary)
             }
             .padding(.bottom, 5)
         }
         .buttonStyle(PlainButtonStyle())
+        .onAppear {
+            isInLibrary = activeRepository.repository != nil && RealmManager.shared.isMangaInLibrary(byTitle: item.title)
+        }
     }
 }
 

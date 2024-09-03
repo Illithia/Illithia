@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA41DF342C849FF5007DF417 /* MangaScreenTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA41DF332C849FF5007DF417 /* MangaScreenTabs.swift */; };
+		AA41DF362C84A46A007DF417 /* SourceViewGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA41DF352C84A46A007DF417 /* SourceViewGrid.swift */; };
+		AA41DF392C8595EF007DF417 /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = AA41DF382C8595EF007DF417 /* Inject */; };
+		AA41DF3C2C85BC29007DF417 /* LucideIcons in Frameworks */ = {isa = PBXBuildFile; productRef = AA41DF3B2C85BC29007DF417 /* LucideIcons */; };
+		AA41DF3E2C85BF4C007DF417 /* Image+LucideStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA41DF3D2C85BF4C007DF417 /* Image+LucideStyle.swift */; };
+		AA41DF402C85C045007DF417 /* Double+Clean.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA41DF3F2C85C045007DF417 /* Double+Clean.swift */; };
+		AA41DF432C85C7F1007DF417 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = AA41DF422C85C7F1007DF417 /* AlertToast */; };
+		AA41DF492C85FB30007DF417 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA41DF482C85FB30007DF417 /* RealmManager.swift */; };
 		AA5254B12C7B7E53005D7017 /* IllithiaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254B02C7B7E53005D7017 /* IllithiaApp.swift */; };
 		AA5254B82C7B7E55005D7017 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA5254B72C7B7E55005D7017 /* Preview Assets.xcassets */; };
 		AA5254C02C7B7F34005D7017 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AA5254BF2C7B7F34005D7017 /* Kingfisher */; };
@@ -20,7 +28,6 @@
 		AA5254DD2C7B804C005D7017 /* SourceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254CF2C7B804C005D7017 /* SourceItem.swift */; };
 		AA5254DE2C7B804C005D7017 /* ContentRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254D12C7B804C005D7017 /* ContentRating.swift */; };
 		AA5254DF2C7B804C005D7017 /* ContentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254D22C7B804C005D7017 /* ContentStatus.swift */; };
-		AA5254E02C7B804C005D7017 /* ReadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254D32C7B804C005D7017 /* ReadStatus.swift */; };
 		AA5254F72C7B8065005D7017 /* LibraryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254E12C7B8065005D7017 /* LibraryScreen.swift */; };
 		AA5254F82C7B8065005D7017 /* ActionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254E32C7B8065005D7017 /* ActionButtons.swift */; };
 		AA5254F92C7B8065005D7017 /* AuthorArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5254E42C7B8065005D7017 /* AuthorArtist.swift */; };
@@ -65,6 +72,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA41DF332C849FF5007DF417 /* MangaScreenTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaScreenTabs.swift; sourceTree = "<group>"; };
+		AA41DF352C84A46A007DF417 /* SourceViewGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceViewGrid.swift; sourceTree = "<group>"; };
+		AA41DF3D2C85BF4C007DF417 /* Image+LucideStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+LucideStyle.swift"; sourceTree = "<group>"; };
+		AA41DF3F2C85C045007DF417 /* Double+Clean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Clean.swift"; sourceTree = "<group>"; };
+		AA41DF482C85FB30007DF417 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		AA5254AD2C7B7E53005D7017 /* Illithia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Illithia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5254B02C7B7E53005D7017 /* IllithiaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IllithiaApp.swift; sourceTree = "<group>"; };
 		AA5254B72C7B7E55005D7017 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -76,7 +88,6 @@
 		AA5254CF2C7B804C005D7017 /* SourceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceItem.swift; sourceTree = "<group>"; };
 		AA5254D12C7B804C005D7017 /* ContentRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentRating.swift; sourceTree = "<group>"; };
 		AA5254D22C7B804C005D7017 /* ContentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentStatus.swift; sourceTree = "<group>"; };
-		AA5254D32C7B804C005D7017 /* ReadStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadStatus.swift; sourceTree = "<group>"; };
 		AA5254E12C7B8065005D7017 /* LibraryScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryScreen.swift; sourceTree = "<group>"; };
 		AA5254E32C7B8065005D7017 /* ActionButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButtons.swift; sourceTree = "<group>"; };
 		AA5254E42C7B8065005D7017 /* AuthorArtist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorArtist.swift; sourceTree = "<group>"; };
@@ -114,13 +125,31 @@
 			files = (
 				AA5254C62C7B7F5F005D7017 /* RealmSwift in Frameworks */,
 				AA5254C32C7B7F43005D7017 /* Flow in Frameworks */,
+				AA41DF3C2C85BC29007DF417 /* LucideIcons in Frameworks */,
+				AA41DF432C85C7F1007DF417 /* AlertToast in Frameworks */,
 				AA5254C02C7B7F34005D7017 /* Kingfisher in Frameworks */,
+				AA41DF392C8595EF007DF417 /* Inject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA41DF442C85F2B8007DF417 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AA41DF472C85FB28007DF417 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				AA41DF482C85FB30007DF417 /* RealmManager.swift */,
+			);
+			path = Singletons;
+			sourceTree = "<group>";
+		};
 		AA5254A42C7B7E53005D7017 = {
 			isa = PBXGroup;
 			children = (
@@ -140,7 +169,9 @@
 		AA5254AF2C7B7E53005D7017 /* Illithia */ = {
 			isa = PBXGroup;
 			children = (
+				AA41DF472C85FB28007DF417 /* Singletons */,
 				AA52550D2C7B81AF005D7017 /* Info.plist */,
+				AA41DF442C85F2B8007DF417 /* Utils */,
 				AA6619422C818EE6002D7C5E /* Extensions */,
 				AA52550E2C7B8211005D7017 /* Resources */,
 				AA5255112C7B82A1005D7017 /* Network */,
@@ -201,7 +232,6 @@
 			children = (
 				AA5254D12C7B804C005D7017 /* ContentRating.swift */,
 				AA5254D22C7B804C005D7017 /* ContentStatus.swift */,
-				AA5254D32C7B804C005D7017 /* ReadStatus.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -232,6 +262,7 @@
 				AA5254E52C7B8065005D7017 /* Backdrop.swift */,
 				AA5254E62C7B8065005D7017 /* ChapterButtons.swift */,
 				AA5254E72C7B8065005D7017 /* Description.swift */,
+				AA41DF332C849FF5007DF417 /* MangaScreenTabs.swift */,
 				AA5254E82C7B8065005D7017 /* TagButtons.swift */,
 				AA5254E92C7B8065005D7017 /* Title.swift */,
 			);
@@ -262,6 +293,7 @@
 			children = (
 				AA5254F12C7B8065005D7017 /* AddSource.swift */,
 				AA5254F22C7B8065005D7017 /* SourceView.swift */,
+				AA41DF352C84A46A007DF417 /* SourceViewGrid.swift */,
 				AA5254EF2C7B8065005D7017 /* SourceListItem.swift */,
 			);
 			path = Components;
@@ -321,8 +353,10 @@
 			isa = PBXGroup;
 			children = (
 				AA6619462C818F90002D7C5E /* URL+Appending.swift */,
+				AA41DF3D2C85BF4C007DF417 /* Image+LucideStyle.swift */,
 				AA66195A2C835A27002D7C5E /* Haptics.swift */,
 				AA6619482C8191B5002D7C5E /* Source+Environment.swift */,
+				AA41DF3F2C85C045007DF417 /* Double+Clean.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -356,6 +390,9 @@
 				AA5254BF2C7B7F34005D7017 /* Kingfisher */,
 				AA5254C22C7B7F43005D7017 /* Flow */,
 				AA5254C52C7B7F5F005D7017 /* RealmSwift */,
+				AA41DF382C8595EF007DF417 /* Inject */,
+				AA41DF3B2C85BC29007DF417 /* LucideIcons */,
+				AA41DF422C85C7F1007DF417 /* AlertToast */,
 			);
 			productName = Illithia;
 			productReference = AA5254AD2C7B7E53005D7017 /* Illithia.app */;
@@ -389,6 +426,9 @@
 				AA5254BE2C7B7F34005D7017 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				AA5254C12C7B7F43005D7017 /* XCRemoteSwiftPackageReference "SwiftUI-Flow" */,
 				AA5254C42C7B7F5F005D7017 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				AA41DF372C8595EF007DF417 /* XCRemoteSwiftPackageReference "Inject" */,
+				AA41DF3A2C85BC29007DF417 /* XCRemoteSwiftPackageReference "lucide-icons-swift" */,
+				AA41DF412C85C7F1007DF417 /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = AA5254AE2C7B7E53005D7017 /* Products */;
 			projectDirPath = "";
@@ -420,8 +460,10 @@
 				AA5254D82C7B804C005D7017 /* Group.swift in Sources */,
 				AA6619592C83454B002D7C5E /* SourceRoute.swift in Sources */,
 				AA5254DF2C7B804C005D7017 /* ContentStatus.swift in Sources */,
+				AA41DF402C85C045007DF417 /* Double+Clean.swift in Sources */,
 				AA5254B12C7B7E53005D7017 /* IllithiaApp.swift in Sources */,
 				AA6619492C8191B5002D7C5E /* Source+Environment.swift in Sources */,
+				AA41DF342C849FF5007DF417 /* MangaScreenTabs.swift in Sources */,
 				AA5254FF2C7B8065005D7017 /* MangaScreen.swift in Sources */,
 				AA66195B2C835A27002D7C5E /* Haptics.swift in Sources */,
 				AA52551B2C7C56A0005D7017 /* SettingsScreen.swift in Sources */,
@@ -431,14 +473,16 @@
 				AA5254DD2C7B804C005D7017 /* SourceItem.swift in Sources */,
 				AA6619472C818F90002D7C5E /* URL+Appending.swift in Sources */,
 				AA5254DC2C7B804C005D7017 /* Source.swift in Sources */,
+				AA41DF492C85FB30007DF417 /* RealmManager.swift in Sources */,
+				AA41DF362C84A46A007DF417 /* SourceViewGrid.swift in Sources */,
 				AA5254FC2C7B8065005D7017 /* Description.swift in Sources */,
 				AA5255012C7B8065005D7017 /* CardGrid.swift in Sources */,
 				AA5255032C7B8065005D7017 /* AddSource.swift in Sources */,
 				AA5254D92C7B804C005D7017 /* Manga.swift in Sources */,
+				AA41DF3E2C85BF4C007DF417 /* Image+LucideStyle.swift in Sources */,
 				AA66194E2C83240E002D7C5E /* CardRow.swift in Sources */,
 				AA5254FD2C7B8065005D7017 /* TagButtons.swift in Sources */,
 				AA5254F72C7B8065005D7017 /* LibraryScreen.swift in Sources */,
-				AA5254E02C7B804C005D7017 /* ReadStatus.swift in Sources */,
 				AA5254DE2C7B804C005D7017 /* ContentRating.swift in Sources */,
 				AA5255122C7B82A1005D7017 /* HttpClient.swift in Sources */,
 				AA5255062C7B8065005D7017 /* SourceScreen.swift in Sources */,
@@ -668,6 +712,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AA41DF372C8595EF007DF417 /* XCRemoteSwiftPackageReference "Inject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzysztofzablocki/Inject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.2;
+			};
+		};
+		AA41DF3A2C85BC29007DF417 /* XCRemoteSwiftPackageReference "lucide-icons-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JakubMazur/lucide-icons-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.438.0;
+			};
+		};
+		AA41DF412C85C7F1007DF417 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.9;
+			};
+		};
 		AA5254BE2C7B7F34005D7017 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -695,6 +763,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AA41DF382C8595EF007DF417 /* Inject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA41DF372C8595EF007DF417 /* XCRemoteSwiftPackageReference "Inject" */;
+			productName = Inject;
+		};
+		AA41DF3B2C85BC29007DF417 /* LucideIcons */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA41DF3A2C85BC29007DF417 /* XCRemoteSwiftPackageReference "lucide-icons-swift" */;
+			productName = LucideIcons;
+		};
+		AA41DF422C85C7F1007DF417 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA41DF412C85C7F1007DF417 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
 		AA5254BF2C7B7F34005D7017 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AA5254BE2C7B7F34005D7017 /* XCRemoteSwiftPackageReference "Kingfisher" */;

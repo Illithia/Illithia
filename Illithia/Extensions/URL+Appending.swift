@@ -9,7 +9,9 @@ import Foundation
 
 extension URL {
     static func appendingPaths(_ baseUrl: String, _ paths: String...) -> URL? {
-        guard var url = URL(string: baseUrl) else {
+        let trimmedBaseUrl = baseUrl.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+        
+        guard var url = URL(string: trimmedBaseUrl) else {
             return nil
         }
         

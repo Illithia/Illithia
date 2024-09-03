@@ -13,8 +13,7 @@ class Chapter: Object {
     @Persisted var sourceId: String
     @Persisted var mangaSlug: String
     
-    @Persisted var pages: Int
-    @Persisted var chapterNumber: Int
+    @Persisted var chapterNumber: Double
     @Persisted var chapterTitle: String
     @Persisted var author: String
     @Persisted var date: Date

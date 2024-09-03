@@ -8,7 +8,7 @@ import Foundation
 import RealmSwift
 
 // Struct used when displaying manga in library, search etc.
-struct ListManga: Identifiable, Decodable {
+struct ListManga: Identifiable, Decodable, Equatable {
     var id: String {
         "\(sourceId)/\(slug)"
     }
@@ -28,11 +28,21 @@ class Manga: Object {
     @Persisted var synopsis: String?
     @Persisted var lastReadAt: Date?
     @Persisted var addedAt: Date?
-    @Persisted var readStatus: String?
     @Persisted var contentRating: String?
     @Persisted var contentStatus: String?
     @Persisted var coverUrl: String?
     @Persisted var tags: List<String>
     @Persisted var groups: List<Group>
     @Persisted var sources: List<Source>
+    
+    func toListManga() -> ListManga {
+        let firstSource = sources.first!
+        
+        return ListManga(
+            sourceId: firstSource.sourceId,
+            slug: firstSource.slug ?? "",
+            title: self.title,
+            coverUrl: self.coverUrl ?? ""
+        )
+    }
 }

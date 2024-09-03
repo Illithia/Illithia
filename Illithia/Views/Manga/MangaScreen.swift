@@ -6,12 +6,55 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct MangaScreen: View {
-    @Environment(ActiveRepository.self) var activeRepository
-    @State private var manga: Manga? = nil
-    
     var props: ListManga
+    @Environment(ActiveRepository.self) var activeRepository
+    
+    @State private var manga: Manga? = nil
+    @State private var inLibrary: Bool = false
+    
+    init(props: ListManga) {
+        self.props = props
+        
+        if let storedManga = RealmManager.shared.fetchManga(byTitle: props.title) {
+            _manga = State(initialValue: storedManga)
+            _inLibrary = State(initialValue: true)
+            print("Loaded Manga from DB")
+        }
+    }
+    
+    func fetchManga(props: ListManga) async -> Void {
+        do {
+            if let repository = activeRepository.repository, let sourceItem = activeRepository.sourceItem {
+                let fetchedManga = try await HttpClient().getManga(
+                    repository: repository,
+                    source: sourceItem.path,
+                    route: props.slug
+                )
+                
+                self.manga = fetchedManga
+                self.inLibrary = false
+            } else {
+                print("Manga is probably in library")
+            }
+        } catch {
+            print("Failed to fetch or save manga: \(error)")
+        }
+    }
+    
+    func saveManga(manga: Manga) {
+        RealmManager.shared.saveManga(manga)
+        self.inLibrary = true
+    }
+    
+    func deleteManga(manga: Manga) {
+        if let detachedManga = RealmManager.shared.deleteManga(manga) {
+            self.manga = detachedManga
+            self.inLibrary = false
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -20,9 +63,7 @@ struct MangaScreen: View {
                 GeometryReader { geometry in
                     ScrollView {
                         VStack(alignment: .leading) {
-                            Spacer()
-                                .frame(height: geometry.size.height / 3)
-                                .fixedSize()
+                            Spacer().frame(height: geometry.size.height / 3)
                             
                             Title(title: manga.title)
                             
@@ -32,7 +73,11 @@ struct MangaScreen: View {
                             
                             Spacer().frame(height: 12)
                             
-                            ActionButtons()
+                            ActionButtons(
+                                manga: manga,
+                                inLibrary: inLibrary,
+                                saveMangaToLibrary: saveManga,
+                                deleteMangaFromLibrary: deleteManga)
                             
                             Spacer().frame(height: 12)
                             
@@ -44,24 +89,26 @@ struct MangaScreen: View {
                             
                             Spacer().frame(height: 22)
                             
-                            if let firstSource = manga.sources.first {
-                                ChapterButtons(chapters: firstSource.chapters)
-                            } else {
-                                Text("No chapters available")
-                            }
+                            MangaScreenTabs(manga: manga)
                         }
-                        .padding(.horizontal, 12)
+                        .padding(.leading, 12)
+                        .padding(.trailing, 16)
                         .background(
-                            GeometryReader { innerGeometry in
+                            VStack(spacing: 0) {
                                 LinearGradient(
                                     gradient: Gradient(stops: [
                                         .init(color: Color("BackgroundColor").opacity(0.0), location: 0.0),
-                                        .init(color: Color("BackgroundColor").opacity(1.0), location: min(700 / innerGeometry.size.height, 1))
+                                        .init(color: Color("BackgroundColor").opacity(1.0), location: 1.0)
                                     ]),
                                     startPoint: .top,
                                     endPoint: .center
                                 )
+                                .frame(height: 700)
+                                
+                                Color("BackgroundColor")
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                             }
+                                .frame(width: geometry.size.width)
                         )
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -69,29 +116,9 @@ struct MangaScreen: View {
             }
         }
         .task {
-            await fetchManga(props: props)
+            if manga == nil {
+                await fetchManga(props: props)
+            }
         }
     }
-    
-    func fetchManga(props: ListManga) async {
-        do {
-            if activeRepository.repository != nil && activeRepository.sourceItem != nil {
-                let manga = try await HttpClient().getManga(
-                    repository: activeRepository.repository!,
-                    source: activeRepository.sourceItem!.path,
-                    route: props.slug
-                )
-                self.manga = manga
-            }
-            else {
-                print("Manga is probably in library")
-            }
-        } catch {
-            print(error)
-        }
-    }
-}
-
-#Preview {
-    MangaScreen(props: ListManga(sourceId: "", slug: "85b3504c-62e8-49e7-9a81-fb64a3f51def", title: "", coverUrl: ""))
 }
